@@ -53,9 +53,7 @@ AI-powered document text extraction using Google Vision OCR and Gemini AI for in
    pip install -r requirements.txt
    ```
 
-5. **Configure API Key** (already done in `.env` file)
-   ```
-   GOOGLE_API_KEY=AIzaSyBwXKt4QJfqec2PeYos4BqXw9e7OFlrChM
+
    ```
 
 6. **Run the application**
