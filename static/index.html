@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Document Scanner - AI-Powered Text Extraction</title>
+    <meta name="description"
+        content="Extract text from images using Google Vision OCR and AI-powered analysis with Gemini">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon">📄</span>
+                    OCR Scanner
+                </h1>
+                <p class="tagline">AI-Powered Document Text Extraction</p>
+            </div>
+            <div class="stats-bar" id="statsBar">
+                <div class="stat-item">
+                    <span class="stat-label">Total Records</span>
+                    <span class="stat-value" id="totalRecords">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Avg Confidence</span>
+                    <span class="stat-value" id="avgConfidence">0%</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-card">
+                    <h2>Upload Documents</h2>
+
+                    <!-- Drag and Drop Zone -->
+                    <div class="drop-zone" id="dropZone">
+                        <div class="drop-zone-icon">📤</div>
+                        <h3>Drag & Drop Images Here</h3>
+                        <p>or click to browse</p>
+                        <input type="file" id="fileInput" accept="image/*" multiple hidden>
+                        <button class="btn btn-primary" id="browseBtn">Browse Files</button>
+                    </div>
+
+                    <!-- Upload Progress -->
+                    <div class="upload-progress" id="uploadProgress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p class="progress-text" id="progressText">Processing...</p>
+                    </div>
+
+                    <!-- File Preview -->
+                    <div class="file-preview" id="filePreview"></div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="btn btn-secondary" id="exportJsonBtn">
+                        <span>📥</span> Export JSON
+                    </button>
+                    <button class="btn btn-secondary" id="exportCsvBtn">
+                        <span>📊</span> Export CSV
+                    </button>
+                    <button class="btn btn-secondary" id="refreshBtn">
+                        <span>🔄</span> Refresh
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section">
+                <div class="results-header">
+                    <h2>Extracted Records</h2>
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search records...">
+                        <button class="search-btn" id="searchBtn">🔍</button>
+                    </div>
+                </div>
+
+                <!-- Filter Pills -->
+                <div class="filter-pills">
+                    <button class="pill active" data-type="all">All</button>
+                    <button class="pill" data-type="receipt">Receipts</button>
+                    <button class="pill" data-type="form">Forms</button>
+                    <button class="pill" data-type="document">Documents</button>
+                    <button class="pill" data-type="letter">Letters</button>
+                    <button class="pill" data-type="note">Notes</button>
+                </div>
+
+                <!-- Results Grid -->
+                <div class="results-grid" id="resultsGrid">
+                    <div class="empty-state">
+                        <div class="empty-icon">📭</div>
+                        <h3>No Records Yet</h3>
+                        <p>Upload your first document to get started</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Record Detail Modal -->
+    <div class="modal" id="recordModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Record Details</h2>
+                <button class="modal-close" id="modalClose">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>
